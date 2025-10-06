@@ -7,9 +7,9 @@
 # Make script terminate on error
 set -e
 
-# Go into the readme-website folder
+# Go into the dev-readme-website folder
 
-cd /home/readme/readme-website/
+cd /home/readme/dev-readme-website/
 
 # Pull GH
 printf "Pulling readme-website/\n"
@@ -25,12 +25,12 @@ yes | docker image prune
 
 # Bring the site down
 printf "Bringing website down\n"
-docker compose down django
+docker compose down
 
 # Copy in DB and media
-rm -r media/
-rm db.sqlite3
-rsync -a ../readme-website/media ./media
+rm -rf media/
+rm -f db.sqlite3
+rsync -a ../readme-website/media/ ./media/
 cp ../readme-website/db.sqlite3 .
 
 # Bring site back up

@@ -12,7 +12,7 @@ services:
     nginx:
         image: nginx:latest
         ports:
-            - "8000:8080"
+            - "9000:80"
         volumes:
             - ./nginx.conf:/etc/nginx/nginx.conf:ro
             - ./staticfiles:/staticfiles:ro
